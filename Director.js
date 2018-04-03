@@ -1,7 +1,9 @@
-// 创建一个导演 【 单例模式 】
+import { DataStore } from "./js/base/DataStore.js";
+
+// 创建一个导演 【 单例模式 】: 存储逻辑
 export class Director {
     constructor(){
-      console.log("构造器初始化")
+      this.dataStore = DataStore.getInstance();
     }
 
     static getInstance(){
@@ -9,5 +11,11 @@ export class Director {
           Director.instance = new Director()
         }
         return Director.instance;
+    }
+
+    // 负责跑起来吧
+    run(){
+      const backgroundSprite = this.dataStore.get('background');
+      backgroundSprite.draw();
     }
 }
