@@ -1,2 +1,3 @@
-import { Main } from './Main'
-new Main()
+import { Main } from './Main.js'
+console.log("Main")
+new Main();
