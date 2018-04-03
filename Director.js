@@ -15,7 +15,11 @@ export class Director {
 
     // 负责跑起来吧
     run(){
-      const backgroundSprite = this.dataStore.get('background');
-      backgroundSprite.draw();
+      this.dataStore.get('background').draw();
+      this.dataStore.get('land').draw();
+
+      // requestAnimationFrame 根据浏览器的帧率进行动态的调整
+      let landTimer = requestAnimationFrame(()=>this.run()); // 进行重复的绘制画面
+      this.dataStore.put('landTimer',landTimer);
     }
 }

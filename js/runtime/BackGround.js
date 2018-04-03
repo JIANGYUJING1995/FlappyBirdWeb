@@ -7,7 +7,6 @@ export class BackGround extends Sprite{
         // 直接获取静态资源res的地址，通过把静态的资源传入，这个一个image的标签
         // <img src="res/background.png">
         const image = Sprite.getImage('background');    
-        console.log(image)
         super(image,
               0,0,
               image.width,image.height,

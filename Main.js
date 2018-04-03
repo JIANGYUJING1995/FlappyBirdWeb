@@ -2,6 +2,7 @@ import { ResourceLoader } from "./js/base/ResourceLoader.js";
 import { Director } from "./Director.js";
 import { BackGround } from "./js/runtime/BackGround.js";
 import { DataStore } from "./js/base/DataStore.js";
+import { Land } from "./js/runtime/Land.js";
 //初始化整个游戏的精灵，作为游戏开始的入口
 export class Main {
     constructor(){
@@ -31,9 +32,11 @@ export class Main {
     // 初始化方法
     init(){
         // 设置dataStore初始化的方法
+        // 一个构造函数对于js来说，所以不传入new，是一个Function
         this.dataStore
             .put(`background`,
-                BackGround);    // 主意Background是一个构造函数对于js来说，所以不传入new，是一个Function
+                BackGround)     //背景
+            .put(`land`,Land)   // 陆地
         Director.getInstance().run();   // 运行
     }
 
