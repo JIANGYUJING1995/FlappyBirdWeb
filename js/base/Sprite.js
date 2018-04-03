@@ -1,7 +1,8 @@
+import { DataStore } from "./DataStore.js";
+
 //精灵的基类，负责初始化精灵加载的资源和大小以及位置
 export class Sprite {
     constructor(
-        ctx = null,
         img = null, //绘制的对象
         srcX = 0,   //剪裁的x,y
         srcY = 0,
@@ -10,7 +11,8 @@ export class Sprite {
         x = 0, y = 0,  // 布局到canvas的坐标
         width = 0, height = 0 // 布局到canvas的宽度高度
     ){
-        this.ctx = ctx;
+        this.dataStore = DataStore.getInstance();
+        this.ctx = this.dataStore.ctx;
         this.img = img;
         this.srcX = srcX;
         this.srcY = srcY;
@@ -53,5 +55,10 @@ export class Sprite {
            width,
            height
        );
+   }
+
+   // 获取静态的资源    
+   static getImage(key){
+       return DataStore.getInstance().res.get(key);
    }
 }

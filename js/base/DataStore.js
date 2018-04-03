@@ -14,8 +14,13 @@ export class DataStore {
         this.map = new Map();
     }
     // 传入静态资源对象
-    put(key,value){
-        this.map.set(key,value);
+    put(key,Value){
+        let v = null;
+        // 代替外部创建new
+        if(Value instanceof Function && typeof Value === 'function'){
+            v = new Value();
+        }
+        this.map.set(key,v);
         return this;
     }
 

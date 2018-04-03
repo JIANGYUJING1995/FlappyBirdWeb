@@ -33,8 +33,7 @@ export class Main {
         // 设置dataStore初始化的方法
         this.dataStore
             .put(`background`,
-                new BackGround(this.ctx,
-                    this.dataStore.res.get('background')));
+                BackGround);    // 主意Background是一个构造函数对于js来说，所以不传入new，是一个Function
         Director.getInstance().run();   // 运行
     }
 
